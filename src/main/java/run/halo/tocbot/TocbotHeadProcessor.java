@@ -67,6 +67,12 @@ public class TocbotHeadProcessor implements TemplateHeadProcessor {
      */
     private String buildTocInit(BasicConfig config) {
 
+        if (StringUtils.isNotBlank(config.getOptions())) {
+            return """
+                tocbot.init(%s);
+                """.formatted(config.getOptions());
+        }
+
         // language=javascript
         return  """
                 tocbot.init({
