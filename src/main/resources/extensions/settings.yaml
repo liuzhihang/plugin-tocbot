@@ -1,30 +1,36 @@
 apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: starter-settings
+  name: plugin-tocbot-settings
 spec:
   forms:
     - group: basic
       label: 基本设置
       formSchema:
         - $formkit: text
-          help: This will be used for your account.
-          label: Email
-          name: email
-          validation: required|email
-        - $formkit: text
-          label: 访问链接
-          name: url
-    - group: advanced
-      label: 高级设置
-      formSchema:
-        - $formkit: text
-          help: This will be used for your theme.
-          label: color
-          name: color
+          label: 目录标签
+          name: headerEl
+          value: "h1,h2,h3,h4,h5,h6"
           validation: required
-        - $formkit: color
-          help: This will be used for your theme.
-          label: color
-          name: color
+          help: "生成目录的标签，使用 , 分隔"
+        - $formkit: text
+          label: 文章容器
+          name: postContent
+          value: ".post-content"
           validation: required
+          help: "生成目录的文章所在的容器，举例：#article-container、.post-content"
+        - $formkit: text
+          label: 目录容器
+          name: tocContent
+          value: ".toc-content"
+          help: "生成的目录将放置在此处，如果文章没有目录，将会移除此容器。"
+          validation: required
+        - $formkit: text
+          label: 移除容器
+          name: removeContentId
+          value: "card-toc"
+          help: "当目录标签为空时，需要移除的容器的 id，举例：文章没有目录时，移除侧边栏的目录组件"
+        - $formkit: textarea
+          label: 自定义配置
+          name: options
+          help: "tocbot.init 的参数，配置此项时，上述配置将不会生效，配置参考：https://tscanlin.github.io/tocbot/#options 中的配置。"
