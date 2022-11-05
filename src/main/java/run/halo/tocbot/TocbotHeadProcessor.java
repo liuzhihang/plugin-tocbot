@@ -39,7 +39,6 @@ public class TocbotHeadProcessor implements TemplateHeadProcessor {
 
     private String tocbotScript(BasicConfig config) {
 
-        String headerElVar = buildHeadersVar(config.getPostContent(), config.getHeaderEl());
         String tocbotInit = buildTocInit(config);
         // language=html
 
@@ -48,7 +47,12 @@ public class TocbotHeadProcessor implements TemplateHeadProcessor {
                 <link href="/plugins/PluginTocbot/assets/static/tocbot/4.18.2/tocbot.css" rel="stylesheet">
                 <script>
                     document.addEventListener("DOMContentLoaded",  function() {
-                        %s
+                    
+                        const postContent = document.querySelector('%s');
+                    
+                        if (postContent == null) return;
+                    
+                        const headers = postContent.querySelectorAll('%s');
                         // 没有 toc 目录，则直接移除
                         if (headers.length === 0) {
                             document.getElementById("%s").remove();
@@ -58,7 +62,7 @@ public class TocbotHeadProcessor implements TemplateHeadProcessor {
                     })
                 </script>
                                 
-                """.formatted(headerElVar, config.getRemoveContentId(), tocbotInit);
+                """.formatted(config.getPostContent(), config.getHeaderEl(), config.getRemoveContentId(), tocbotInit);
     }
 
 
@@ -83,14 +87,6 @@ public class TocbotHeadProcessor implements TemplateHeadProcessor {
                   });
                 """.formatted(config.getTocContent(), config.getPostContent(), config.getHeaderEl());
 
-    }
-
-    /**
-     * 获取 headers
-     */
-    private String buildHeadersVar(String postContent, String headerEl) {
-        // language=javascript
-        return "const headers = document.querySelector('%s').querySelectorAll('%s');".formatted(postContent, headerEl);
     }
 
     /**

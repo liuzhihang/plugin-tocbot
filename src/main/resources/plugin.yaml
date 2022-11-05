@@ -4,14 +4,14 @@ metadata:
   name: PluginTocbot
 spec:
   enabled: true
-  version: 1.0.0-SNAPSHOT
+  version: 1.0.0-alpha.2
   requires: "*"
   author: halo-dev
   logo: https://halo.run/logo
   settingName: plugin-tocbot-settings
   configMapName: plugin-tocbot-configMap
   homepage: https://github.com/liuzhihang/plugin-tocbot
-  displayName: "Tocbot 目录生成插件"
+  displayName: "Tocbot 目录生成"
   description: "对 Tocbot 的集成，支持生成文章目录"
   license:
     - name: "MIT"
