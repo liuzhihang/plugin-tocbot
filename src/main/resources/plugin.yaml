@@ -6,7 +6,7 @@ spec:
   enabled: true
   version: 1.0.0-alpha.2
   requires: "*"
-  author: halo-dev
+  author: liuzhihang
   logo: https://halo.run/logo
   settingName: plugin-tocbot-settings
   configMapName: plugin-tocbot-configMap
