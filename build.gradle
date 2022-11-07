@@ -5,7 +5,7 @@ plugins {
     id 'java'
 }
 
-group 'run.halo.tocbot'
+group 'run.liuzhihang.tocbot'
 sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
