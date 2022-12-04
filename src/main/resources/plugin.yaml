@@ -4,9 +4,11 @@ metadata:
   name: PluginTocbot
 spec:
   enabled: true
-  version: 1.0.0-alpha.2
+  version: 1.0.0
   requires: "*"
-  author: liuzhihang
+  author:
+    name: liuzhihang
+    website: https://github.com/liuzhihang
   logo: https://halo.run/logo
   settingName: plugin-tocbot-settings
   configMapName: plugin-tocbot-configMap
